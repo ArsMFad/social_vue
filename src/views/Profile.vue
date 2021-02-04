@@ -147,23 +147,24 @@
   </v-app>
 </template>
 
+
 <script>
 export default {
-  name: 'App',
-
-  components: {
-  },
-
-  data: () => ({
-    nav: true
-  }),
-};
+	name: 'Profile',
+	data() {
+		return {
+			userData: ''
+		}
+	},
+	methods: {
+		getUserData() {
+			this.axios.get(`http://jsonplaceholder.typicode.com/users/${this.$route.params.id}`)
+				.then((response)=> {
+					console.log(response);
+					this.userData = response.data;
+				})
+		}
+	}
+}
 </script>
 
-
-<script>
-  
-</script>
-
-<style lang="scss">
-</style>
