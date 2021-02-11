@@ -2,12 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
+import FindFriends from '../views/FindFriends.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: Home
   },
@@ -23,6 +24,11 @@ const routes = [
     path: '/users/:id',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: 'users',
+    name: 'FindFriends',
+    component: FindFriends
   }
 ]
 

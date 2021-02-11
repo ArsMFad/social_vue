@@ -1,94 +1,31 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      app
-      color="green"
-      expand-on-hover
-      hide-overlay
-      permanent
-      right
-      dark
-    >
-      <v-list
-        nav
-        shaped
-        dense
-      >
-        <v-list-item two line>
-          <v-list-item-avatar>
-            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
-          </v-list-item-avatar>
-        </v-list-item>
-
-        <v-divider class="my-3"></v-divider>
-
-        <v-list-item link :to='link'>
-
-          <v-list-item-icon>
-            <v-icon>mdi-home-outline</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title class="text-left">Home</v-list-item-title>
-          </v-list-item-content>
-
-        </v-list-item>
-
-        <v-list-item link :to='link'>
-
-          <v-list-item-icon>
-            <v-icon>mdi-account-outline</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title class="text-left">My profile</v-list-item-title>
-          </v-list-item-content>
-          
-        </v-list-item>
-
-
-        <v-list-item link :to='link'>
-
-          <v-list-item-icon>
-            <v-icon>mdi-account-multiple-plus-outline</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title class="text-left">Find friends</v-list-item-title>
-          </v-list-item-content>
-          
-        </v-list-item>
-
-      </v-list>
-
-    </v-navigation-drawer>
-
     <v-content class="px-12 py-3">
       <v-container fluid>
         <v-row class="text-left">
             <v-col cols="10">
                 <h1 class="green--text text--darken-2">
                     <v-icon large color="green darken-2">mdi-account-outline</v-icon>
-                    Иван Иванов
+                    {{ userData.name }}
                 </h1>
             </v-col>
         </v-row>
         <v-row class="text-left">
             <v-col cols="2">
-                <img src="https://randomuser.me/api/portraits/men/2.jpg" style="max-width: 100%">
+                <img v-bind:src="`https://randomuser.me/api/portraits/men/${$route.params.id}.jpg`" style="max-width: 100%">
             </v-col>
             <v-col cols="10" class="text-left">
                 <p>
-                    Веб-сайт: <a href="..." target="_blank">...</a>
+                    Веб-сайт: <a v-bind:href="'https://'+ userData.website" target="_blank">{{ userData.website }}</a>
                 </p>
                 <p>
-                    E-mail: <a href="mailto:...">...</a>
+                    E-mail: <a v-bind:href="'mailto:' + userData.email">{{ userData.email }}</a>
                 </p>
                 <p>
-                    Город: ...
+                    Город: {{ userData.address.city }}
                 </p>
                 <p>
-                    Место работы: ...
+                    Место работы: {{ userData.company.name }}
                 </p>
             </v-col>
         </v-row>
@@ -163,6 +100,14 @@ export default {
 					console.log(response);
 					this.userData = response.data;
 				})
+		}
+	},
+	mounted() {
+		this.getUserData();
+	},
+	watch: {
+		$route() {
+			this.getUserData();
 		}
 	}
 }
