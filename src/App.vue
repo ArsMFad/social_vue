@@ -46,7 +46,7 @@
         </v-list-item>
 
 
-        <v-list-item link to='/users'>
+        <v-list-item link to='/users' exact>
 
           <v-list-item-icon>
             <v-icon>mdi-account-multiple-plus-outline</v-icon>
@@ -64,7 +64,7 @@
 
     <v-content class="px-12 py-3">
       <v-container fluid>
-        <router-view/>
+        <router-view v-on:login="updateUser" />
       </v-container>
     </v-content>
   </v-app>
@@ -73,13 +73,11 @@
 <script>
 export default {
   name: 'App',
-
-  components: {
-  },
-
   data: () => ({
     nav: true
   }),
+  methods: {
+  }
 };
 </script>
 
