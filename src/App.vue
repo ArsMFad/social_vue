@@ -33,31 +33,43 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link to='/users/2'>
-
+        <v-list-item link to='/login' v-if="$store.state.userId == '-1'">
           <v-list-item-icon>
-            <v-icon>mdi-account-outline</v-icon>
+            <v-icon>mdi-account</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="text-left">My profile</v-list-item-title>
+            <v-list-item-title class="text-left">Login</v-list-item-title>
           </v-list-item-content>
-          
         </v-list-item>
 
+        <v-list-item-group v-else>
+          <v-list-item link :to='`/users/${$store.state.userId  }`'>
 
-        <v-list-item link to='/users' exact>
+            <v-list-item-icon>
+              <v-icon>mdi-account-outline</v-icon>
+            </v-list-item-icon>
 
-          <v-list-item-icon>
-            <v-icon>mdi-account-multiple-plus-outline</v-icon>
-          </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title class="text-left">My profile</v-list-item-title>
+            </v-list-item-content>
+            
+          </v-list-item>
 
-          <v-list-item-content>
-            <v-list-item-title class="text-left">Find friends</v-list-item-title>
-          </v-list-item-content>
-          
-        </v-list-item>
 
+          <v-list-item link to='/users' exact>
+
+            <v-list-item-icon>
+              <v-icon>mdi-account-multiple-plus-outline</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title class="text-left">Find friends</v-list-item-title>
+            </v-list-item-content>
+            
+          </v-list-item>
+
+        </v-list-item-group>
       </v-list>
 
     </v-navigation-drawer>

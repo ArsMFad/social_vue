@@ -6,6 +6,20 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  methods:{ 
+	init(){
+		if(this.$store.state.userId == '-1')
+			this.$router.push('/login');
+	}
+  },
+  mounted(){
+	this.init()
+  },
+  watch:{
+	$route(){
+		this.init();
+	}
+  }
 }
 </script>

@@ -28,6 +28,12 @@
 <script>
 export default {
     name: 'Login',
+    data(){
+        return {
+            login: '',
+            password: ''
+        }
+    },
     methods: {
         authenticate() {
             this.axios.get("http://37.77.104.246/api/jsonstorage/?id=0f6fb5a75e57647807aa7205a5140f02")
@@ -38,6 +44,7 @@ export default {
 
                         for (let index in users) {
                             if ((this.login == users[index].login) && (this.password == users[index].password)) {
+
                                 this.$store.commit('setUserId', parseInt(index) + 1)
                                 this.$router.push('users/' + this.$store.state.userId);
                                 found = true;
@@ -51,6 +58,10 @@ export default {
                     }
                 )
         }
+    },
+    mounted(){
+        if(this.$store.state.userId != '-1')
+            this.$router.push('users/' + this.$store.state.userId);
     }
 }
 </script>

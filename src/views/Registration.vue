@@ -2,11 +2,11 @@
     <div class="d-flex justify-center">
         <v-card width="600px" class="mt-12 pa-10">
             <v-card-title>
-                Войдите в аккаунт
+                Регистрация
             </v-card-title>
 
             <v-text-field
-                label="Введите логин"
+                label="Введите имя"
                 v-model="login"
                 outlined
             ></v-text-field>
@@ -18,7 +18,7 @@
             ></v-text-field>
 
             <v-btn @click="authenticate">
-                Войти
+                Регистрация
             </v-btn>
         </v-card>
     </div>
@@ -28,6 +28,18 @@
 <script>
 export default {
     name: 'Registration',
+    data() {
+        return {
+            login: '',
+            password: '',
+            name: '',
+            website: '',
+            email: '',
+            city: '',
+            company: '',
+            photo: ''
+        }
+    },
     methods: {
         register() {
             this.axios.get("http://37.77.104.246/api/jsonstorage/?id=0f6fb5a75e57647807aa7205a5140f02")
@@ -35,21 +47,14 @@ export default {
                     (response) => {
                         let users = response.data;
                         let found = false;
-
-                        for (let index in users) {
-                            if ((this.login == users[index].login) && (this.password == users[index].password)) {
-								this.$emit('login', index)
-                                this.$router.push('users/' + index);
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if (!found) {
-                            window.alert('Wrong!')
-                        }
                     }
                 )
+        },
+        addUser() {
+            this.axios.post("http://37.77.104.246/api/jsonstorage/?id=0f6fb5a75e57647807aa7205a5140f02", {
+                data: users
+            })
+
         }
     }
 }
