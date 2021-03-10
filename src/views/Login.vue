@@ -36,13 +36,15 @@ export default {
     },
     methods: {
         authenticate() {
-            this.axios.get("http://37.77.104.246/api/jsonstorage/?id=0f6fb5a75e57647807aa7205a5140f02")
+            this.axios.get("http://37.77.104.246/api/jsonstorage/?id=100f06bcf58ff825f404e5aa25033588")
                 .then(
                     (response) => {
-                        let users = response.data;
+                        let users = response.data.data;
                         let found = false;
 
                         for (let index in users) {
+                            console.log(users[index].login);
+                            console.log(users[index].password);
                             if ((this.login == users[index].login) && (this.password == users[index].password)) {
 
                                 this.$store.commit('setUserId', parseInt(index) + 1)

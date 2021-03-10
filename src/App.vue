@@ -76,7 +76,7 @@
 
     <v-content class="px-12 py-3">
       <v-container fluid>
-        <router-view v-on:login="updateUser" />
+        <router-view/>
       </v-container>
     </v-content>
   </v-app>

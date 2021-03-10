@@ -17,7 +17,7 @@
                 outlined
             ></v-text-field>
 
-            <v-btn @click="authenticate">
+            <v-btn @click="register">
                 Регистрация
             </v-btn>
         </v-card>
@@ -41,20 +41,23 @@ export default {
         }
     },
     methods: {
+        addUser(us) {
+            this.axios.put("http://37.77.104.246/api/jsonstorage/?id=100f06bcf58ff825f404e5aa25033588", {
+                data: us
+            })
+        },
         register() {
-            this.axios.get("http://37.77.104.246/api/jsonstorage/?id=0f6fb5a75e57647807aa7205a5140f02")
+            this.axios.get("http://37.77.104.246/api/jsonstorage/?id=100f06bcf58ff825f404e5aa25033588")
                 .then(
                     (response) => {
-                        let users = response.data;
-                        let found = false;
+                        let users = response.data.data;
+                        console.log(users);
+                        let new_one = {'login': this.login, 'password': this.password, 'name': this.name, 'website': this.website, 'email': this.email, 'city': this.city, 'company': this.company, 'photo': this.photo};
+                        users.push(new_one);
+                        console.log(users);
+                        this.addUser(users);
                     }
                 )
-        },
-        addUser() {
-            this.axios.post("http://37.77.104.246/api/jsonstorage/?id=0f6fb5a75e57647807aa7205a5140f02", {
-                data: users
-            })
-
         }
     }
 }
