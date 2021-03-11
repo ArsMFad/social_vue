@@ -22,10 +22,10 @@
                     E-mail: <a v-bind:href="'mailto:' + userData.email">{{ userData.email }}</a>
                 </p>
                 <p>
-                    Город: {{ userData.address.city }}
+                    Город: {{ userData.city }}
                 </p>
                 <p>
-                    Место работы: {{ userData.company.name }}
+                    Место работы: {{ userData.company }}
                 </p>
             </v-col>
         </v-row>
@@ -94,10 +94,10 @@ export default {
 	},
 	methods: {
 		getUserData() {
-			this.axios.get(`http://jsonplaceholder.typicode.com/users/${this.$route.params.id}`)
+			this.axios.get("http://37.77.104.246/api/jsonstorage/?id=100f06bcf58ff825f404e5aa25033588")
 				.then((response)=> {
-					console.log(response);
-					this.userData = response.data;
+					console.log(response.data.data[this.$route.params.id - 1]);
+					this.userData = response.data.data[this.$route.params.id - 1];
 				})
 		}
 	},

@@ -17,6 +17,43 @@
                 outlined
             ></v-text-field>
 
+            <v-text-field
+                label="Input name"
+                v-model="name"
+                outlined
+            ></v-text-field>
+
+            <v-text-field
+                label="Input website"
+                v-model="website"
+                outlined
+            ></v-text-field>
+
+            <v-text-field
+                label="Input email"
+                v-model="email"
+                outlined
+            ></v-text-field>
+
+            <v-text-field
+                label="Input city"
+                v-model="city"
+                outlined
+            ></v-text-field>
+
+            <v-text-field
+                label="Input company"
+                v-model="company"
+                outlined
+            ></v-text-field>
+
+
+            <v-text-field
+                label="Input link on photo"
+                v-model="photo"
+                outlined
+            ></v-text-field>
+
             <v-btn @click="register">
                 Регистрация
             </v-btn>
