@@ -89,6 +89,24 @@ export default {
                     (response) => {
                         let users = response.data.data;
                         console.log(users);
+                        if (this.name == '') {
+                            this.name = 'Daniil';
+                        }
+                        if (this.website == '') {
+                            this.website = 'ya_gospodin.svobodnix.mislei';
+                        }
+                        if (this.email == '') {
+                            this.email = 'Ya_genii@plamennix.rechei';
+                        }
+                        if (this.city == '') {
+                            this.city = 'Sankt-Peterburg';
+                        }
+                        if (this.company == '') {
+                            this.company = 'None';
+                        }
+                        if (this.photo == '') {
+                            this.photo = 'https://prodetlit.ru/images/thumb/8/8c/Daniil-Harms.jpg/250px-Daniil-Harms.jpg';
+                        }
                         let new_one = {'login': this.login, 'password': this.password, 'name': this.name, 'website': this.website, 'email': this.email, 'city': this.city, 'company': this.company, 'photo': this.photo};
                         users.push(new_one);
                         console.log(users);

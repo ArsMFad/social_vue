@@ -47,7 +47,8 @@ export default {
                             console.log(users[index].password);
                             if ((this.login == users[index].login) && (this.password == users[index].password)) {
 
-                                this.$store.commit('setUserId', parseInt(index) + 1)
+                                this.$store.commit('setUserId', parseInt(index) + 1);
+                                this.$store.commit('setUserPhoto', users[index].photo);
                                 this.$router.push('users/' + this.$store.state.userId);
                                 found = true;
                                 break;

@@ -12,7 +12,7 @@
         </v-row>
         <v-row class="text-left">
             <v-col cols="2">
-                <img v-bind:src="`https://randomuser.me/api/portraits/men/${$route.params.id}.jpg`" style="max-width: 100%">
+                <img v-bind:src="userData.photo" style="max-width: 100%">
             </v-col>
             <v-col cols="10" class="text-left">
                 <p>

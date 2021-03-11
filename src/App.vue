@@ -16,7 +16,7 @@
       >
         <v-list-item two line>
           <v-list-item-avatar>
-            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
+            <img v-bind:src="getPhoto" alt="">
           </v-list-item-avatar>
         </v-list-item>
 
@@ -42,6 +42,17 @@
             <v-list-item-title class="text-left">Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item link to='/registration' v-if="$store.state.userId == '-1'">
+          <v-list-item-icon>
+            <v-icon>mdi-account-alert</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title class="text-left">Registration</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
 
         <v-list-item-group v-else>
           <v-list-item link :to='`/users/${$store.state.userId  }`'>
@@ -88,15 +99,16 @@ export default {
   data: () => ({
     nav: true
   }),
-  methods: {
+  computed: {
+    getPhoto() {
+      return this.$store.state.photo;
+    }
   }
 };
 </script>
 
-
-<script>
-  
-</script>
-
-<style lang="scss">
+<style>
+.app {
+  background-image: url(https://apwshop.com/upload/iblock/ed0/680.jpg);
+}
 </style>
